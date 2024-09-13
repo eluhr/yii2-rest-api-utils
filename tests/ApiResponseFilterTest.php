@@ -3,23 +3,31 @@
 use eluhr\restApiUtils\filters\ApiResponseFilter;
 use PHPUnit\Framework\TestCase;
 use yii\base\Module;
+use yii\web\Response;
 
 final class ApiResponseFilterTest extends TestCase
 {
-    public function testWIP(): void
+    public function testAccessControlAllowCredentials(): void
     {
-        $this->assertTrue(true);
+        Yii::$app->runAction('api1');
+        $this->assertSame(Yii::$app->getResponse()->getHeaders()->get('Access-Control-Allow-Credentials'), 'true');
     }
-}
 
-class CustomModule extends Module
-{
-    public function behaviors()
+    public function testResponseFormatIsJson(): void
     {
-        $behaviors = parent::behaviors();
-        $behaviors['api-response-filter'] = [
-            'class' => ApiResponseFilter::class
-        ];
-        return $behaviors;
+        Yii::$app->runAction('api1');
+        $this->assertSame(Yii::$app->getResponse()->format, Response::FORMAT_JSON);
+    }
+
+    public function testSessionIsDisabled(): void
+    {
+        Yii::$app->runAction('api1');
+        $this->assertFalse(Yii::$app->getUser()->enableSession);
+    }
+
+    public function testLoginUrl(): void
+    {
+        Yii::$app->runAction('api1');
+        $this->assertNull(Yii::$app->getUser()->loginUrl);
     }
 }

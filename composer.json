@@ -22,6 +22,11 @@
       "eluhr\\restApiUtils\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "eluhr\\restApiUtilsTest\\": "tests/_app"
+    }
+  },
   "repositories": {
     "asset-packagist": {
       "type": "composer",
