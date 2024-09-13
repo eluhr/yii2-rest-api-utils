@@ -1,0 +1,36 @@
+{
+  "name": "eluhr/yii2-rest-api-utils",
+  "description": "This brings some utils for yii2 rest apis.",
+  "type": "yii2-extension",
+  "keywords": ["yii2","extension","rest","api"],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Elias Luhr",
+      "email": "e.luhr@herzogkommunikation.de"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0",
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10"
+  },
+  "autoload": {
+    "psr-4": {
+      "eluhr\\restApiUtils\\": "src"
+    }
+  },
+  "repositories": {
+    "asset-packagist": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  }
+}
